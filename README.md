@@ -1,5 +1,5 @@
 # Bienvenue !
-<a href="https://www.linkedin.com/in/kenzi-boughadou-3a4422318/" /></a>
+<a href="https://www.linkedin.com/in/kenzi-boughadou-3a4422318/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 
 👋 Bienvenue dans mon portfolio de cybersécurité ! Je suis BOUGHADOU Kenzi, étudiant en MSc Cybersécurité et Management. Passionné par la sécurité informatique et la protection des données, je me spécialise dans l’analyse des vulnérabilités, l'architecture réseau sécurisée et la gestion de crise.
 
