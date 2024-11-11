@@ -1,13 +1,12 @@
 # Bienvenue !
-<a href="https://www.linkedin.com/in/kenzi-boughadou-3a4422318/" /></a>
 
 👋 Bienvenue dans mon portfolio de cybersécurité ! Je suis BOUGHADOU Kenzi, étudiant en MSc Cybersécurité et Management. Passionné par la sécurité informatique et la protection des données, je me spécialise dans l’analyse des vulnérabilités, l'architecture réseau sécurisée et la gestion de crise.
 
 ## Objectif de ce Portfolio
 
-Passionné par la cybersécurité, j’ai conçu cet espace pour partager certains des projets que j’ai réalisés au cours de ma formation. Vous y découvrirez des exemples concrets de mon travail, qui reflètent mon savoir-faire en gestion de données, analyse prédictive et visualisation, ainsi que ma capacité à résoudre des problématiques complexes à travers des solutions innovantes et axées sur les données.
+Passionné par la cybersécurité, j'ai conçu cet espace pour partager certains des projets que j'ai réalisés au cours de ma formation. Vous y découvrirez des exemples concrets de mon travail, qui reflètent mon savoir-faire en protection des données, analyse de vulnérabilités, et gestion des incidents, ainsi que ma capacité à résoudre des problématiques complexes grâce à des solutions sécurisées et innovantes.
 
-Mon objectif est de contribuer à des projets ambitieux et stimulants dans le domaine de la Data
+Mon objectif est de contribuer à des projets ambitieux et stimulants dans le domaine de la cybersécurité.
 
 ## Aperçu de Mes Projets
 
@@ -20,7 +19,7 @@ Mon objectif est de contribuer à des projets ambitieux et stimulants dans le do
 | <a href="https://github.com/KenziBoughadou/Password-Strength-Checker">Vérificateur de Force de Mot de Passe</a>| Outil CLI pour évaluer la robustesse des mots de passe et fournir des conseils d'amélioration.	|Python, getpass, string|
 
 ## Contact
-Pour toute question ou collaboration, n'hésitez pas à me contacter via [LinkedIn](https://www.linkedin.com/in/kenzi-boughadou/) ou par email.
+Pour toute question ou collaboration, n'hésitez pas à me contacter via [LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) ou par email.
 
 Merci de consulter mon portfolio et de découvrir mes projets en cybersécurité !
 
