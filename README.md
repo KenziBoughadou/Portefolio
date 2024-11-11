@@ -20,7 +20,7 @@ Mon objectif est de contribuer à des projets ambitieux et stimulants dans le do
 | <a href="https://github.com/KenziBoughadou/Password-Strength-Checker">Vérificateur de Force de Mot de Passe</a>| Outil CLI pour évaluer la robustesse des mots de passe et fournir des conseils d'amélioration.	|Python, getpass, string|
 
 ## Contact
-Pour toute question ou collaboration, n'hésitez pas à me contacter via [LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) ou par email.
+Pour toute question ou collaboration, n'hésitez pas à me contacter via [LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) ou par [Email](mailto:kenzi.boughadou@gmail.com).
 
 Merci de consulter mon portfolio et de découvrir mes projets en cybersécurité !
 
