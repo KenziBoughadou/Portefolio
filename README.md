@@ -18,6 +18,8 @@ Mon objectif est de contribuer à des projets ambitieux et stimulants dans le do
 | <a href="https://github.com/KenziBoughadou/Network-Scanner">Scanner de Réseau ARP</a>| Outil pour découvrir les appareils actifs sur un réseau local via des requêtes ARP.|Python, Scapy|
 | <a href="https://docs.google.com/document/d/1PHJfkF1azAh7t2jBwTaKjhOJtszHBK0MQ2s4fL786Jo/edit?usp=sharing">Projet de Sécurisation d'une Clinique de Chirurgie Esthétique</a>| Sécurisation d’une clinique de chirurgie esthétique avec une approche Security by Design pour la protection des données de santé.|Microsoft Azure, Zero Trust, ISO 27001, ISO 27799|
 | <a href="https://github.com/KenziBoughadou/Password-Strength-Checker">Vérificateur de Force de Mot de Passe</a>| Outil CLI pour évaluer la robustesse des mots de passe et fournir des conseils d'amélioration.	|Python, getpass, string|
+| <a href="https://github.com/KenziBoughadou/Securisation-SI-d-un-etablissement-hospitalier">Sécurisation SI d’un établissement hospitalier (PCA, PRA, PSSI)</a> | Audit et sécurisation complète du SI d’un hôpital : rédaction du PCA, PRA et Politique de Sécurité, incluant segmentation réseau, gestion de crise, conformité RGPD/HDS. [📄 Livrables](#livrables-sih) | Windows Server, Debian, OPNSense, VLAN, Zabbix, Wazuh, ISO 27001 |
+
 
 ## Contact
 Pour toute question ou collaboration, n'hésitez pas à me contacter via [LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) ou par [Email](mailto:kenzi.boughadou@gmail.com).
