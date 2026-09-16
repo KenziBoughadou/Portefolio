@@ -1,87 +1,86 @@
-# Kenzi Boughadou — Portfolio IA & Data
+# Kenzi Boughadou
 
-**Machine learning · Deep learning · NLP appliqué**
+**Portfolio en intelligence artificielle et data science**
 
-Étudiant en **Master 1 MIAS à Centrale Lille et à l’Université de Lille**, je m’intéresse à l’évaluation des modèles et à leurs applications en santé. Ces trois projets personnels relient une question expérimentale, une implémentation lisible et une analyse des résultats, y compris lorsqu’ils contredisent l’amélioration attendue.
+Je suis étudiant en **Master 1 MIAS à Centrale Lille et à l’Université de Lille**. Je m’intéresse au machine learning et au traitement du langage, notamment pour leurs applications en santé.
 
-**Recherche de stage en IA / Data, en priorité dans la santé : du 22 mars au 31 août 2027.** Alternance M2 envisagée dès septembre 2027, pour douze mois.
+Ce portfolio rassemble trois projets personnels. Pour chacun, je pars d’une question, je compare plusieurs méthodes et j’examine leurs erreurs. Le code, les expériences et les résultats sont disponibles dans les dépôts pour permettre de suivre le raisonnement et de reproduire les calculs.
 
-[LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) · [GitHub](https://github.com/KenziBoughadou) · [Contact](mailto:kenzi.boughadou@gmail.com)
+Je recherche un **stage en IA ou en data du 22 mars au 31 août 2027**, en priorité dans le domaine de la santé. Je souhaite ensuite poursuivre en alternance en M2 à partir de septembre 2027, pour douze mois.
 
-## Trois projets, trois questions
+[LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) · [GitHub](https://github.com/KenziBoughadou) · [Me contacter](mailto:kenzi.boughadou@gmail.com)
 
-| Projet | Question étudiée | Outils principaux |
+## Projets
+
+| Projet | Sujet | Principaux outils |
 |---|---|---|
-| [PathMNIST Confidence](https://github.com/KenziBoughadou/pathmnist-confidence) | Un modèle plus performant donne-t-il des probabilités plus fiables ? Quand s’abstenir ? | Python, scikit-learn, PyTorch, Streamlit |
-| [Fashion-MNIST Study](https://github.com/KenziBoughadou/fashion-mnist-study) | Que change une architecture convolutive face à un réseau dense de capacité proche ? | Python, PyTorch, NumPy, Matplotlib |
-| [MediNote](https://github.com/KenziBoughadou/medinote) | Extraire des faits avant de rédiger une note améliore-t-il sa fidélité au dialogue ? | Python, FastAPI, React, TypeScript, API LLM |
+| [PathMNIST Confidence](https://github.com/KenziBoughadou/pathmnist-confidence) | Classification d’images histologiques, calibration des probabilités et abstention | Python, scikit-learn, PyTorch, Streamlit |
+| [Fashion-MNIST Study](https://github.com/KenziBoughadou/fashion-mnist-study) | Comparaison d’un réseau dense et d’un réseau convolutif | Python, PyTorch, NumPy, Matplotlib |
+| [MediNote](https://github.com/KenziBoughadou/medinote) | Comparaison de deux méthodes de résumé de consultations fictives | Python, FastAPI, React, TypeScript, API LLM |
 
-Ces travaux couvrent l’apprentissage supervisé, l’entraînement de réseaux neuronaux et l’évaluation d’un modèle de langage déjà entraîné. Les deux projets liés à la santé sont académiques : **aucun usage diagnostique ni validation clinique**.
+## PathMNIST Confidence : étudier la confiance d’un classifieur
 
-## PathMNIST Confidence — performance, calibration et abstention
+**Un modèle qui classe mieux les images fournit-il aussi des probabilités plus fiables ?**
 
-Sur neuf classes d’images histologiques, je compare une **régression logistique**, un **petit CNN entraîné depuis une initialisation aléatoire** et **le même CNN après temperature scaling**.
+Sur PathMNIST, un jeu de neuf classes d’images histologiques, je compare une régression logistique sur les pixels aplatis à un petit CNN entraîné avec PyTorch. J’ajuste ensuite une température sur les sorties du CNN pour étudier l’effet de cette calibration sur ses probabilités.
 
-La validation officielle est séparée en deux partitions stratifiées : sélection du checkpoint et ajustement de la température. Les trois graines CNN sont entraînées et calibrées avant l’évaluation finale sur le test officiel.
+Les données utilisées pour choisir le meilleur checkpoint sont distinctes de celles qui servent à ajuster la température. Les trois entraînements CNN, réalisés avec des graines différentes, et leurs calibrations sont terminés avant l’évaluation sur le test officiel.
 
-**Résultat observé :** le macro-F1 du CNN atteint **0,7077 ± 0,0191**, contre **0,4353** pour la baseline. La température réduit la NLL sur la calibration, mais l’augmente sur le test pour les trois graines. Les erreurs très confiantes persistent ; la calibration n’apporte donc pas une amélioration générale de la fiabilité.
+Le CNN obtient un **macro-F1 de 0,7077 ± 0,0191**, contre **0,4353** pour la régression logistique. En revanche, la calibration réduit la perte logarithmique, ou NLL, sur les données d’ajustement mais l’augmente sur le test pour les trois graines. Une amélioration sur la partition de calibration ne se retrouve donc pas nécessairement sur de nouvelles données.
 
-L’analyse comprend NLL, Brier, ECE, diagrammes de fiabilité, erreurs et courbes risque–couverture. **Streamlit explore les prédictions enregistrées**, sans entraînement dans l’application.
+J’examine aussi le score de Brier, l’ECE, les diagrammes de fiabilité et les erreurs à haute confiance. Les courbes de risque en fonction de la couverture permettent d’observer ce qui se passe lorsque le modèle rejette les images les moins confiantes. Une application Streamlit permet d’explorer ces prédictions déjà calculées.
 
-**Limites :** baseline non convergée à 300 itérations, trois graines sur une partition fixe, aucune robustesse générale démontrée au changement de centre clinique.
+La comparaison a plusieurs limites. La régression logistique n’a pas convergé au terme des 300 itérations prévues. Les trois graines utilisent une seule partition, et les résultats sur un test provenant d’un autre centre clinique ne suffisent pas à démontrer une robustesse générale.
 
-[Code et présentation](https://github.com/KenziBoughadou/pathmnist-confidence) · [Protocole](https://github.com/KenziBoughadou/pathmnist-confidence/blob/main/docs/PROTOCOL.md) · [Résultats complets](https://github.com/KenziBoughadou/pathmnist-confidence/blob/main/results/study/report/README.md)
+[Consulter le code](https://github.com/KenziBoughadou/pathmnist-confidence) · [Lire le protocole](https://github.com/KenziBoughadou/pathmnist-confidence/blob/main/docs/PROTOCOL.md) · [Voir les résultats](https://github.com/KenziBoughadou/pathmnist-confidence/blob/main/results/study/report/README.md)
 
-## Fashion-MNIST Study — comparer MLP et CNN
+## Fashion-MNIST Study : comparer deux architectures
 
-Je compare un **réseau dense** et un **réseau convolutif**, avec environ 102 000 et 106 000 paramètres, sur dix catégories de vêtements. Chaque modèle est entraîné pendant quinze époques avec trois graines, une partition commune et le même ordre des lots pour une graine donnée.
+**Quel est l’apport d’un réseau convolutif par rapport à un réseau dense de taille proche ?**
 
-La boucle PyTorch explicite l’apprentissage, la validation et la sauvegarde du meilleur checkpoint. Les six entraînements précèdent l’évaluation sur le test ; l’étude conserve les erreurs, les courbes et les durées CPU.
+Cette étude compare un MLP et un CNN sur dix catégories de vêtements. Les modèles comptent environ 102 000 et 106 000 paramètres. Chacun est entraîné pendant quinze époques, avec trois graines et une partition commune. Pour une même graine, les deux modèles voient les exemples dans le même ordre.
 
-**Résultat observé :** le CNN atteint **91,04 ± 0,38 % d’exactitude**, contre **87,89 ± 0,42 %** pour le MLP. Sa durée moyenne d’entraînement est environ **2,75 fois supérieure**. L’amélioration globale ne se retrouve pas dans toutes les classes pour la graine illustrée.
+La boucle d’entraînement PyTorch reste explicite. Elle comprend le calcul de la perte, la rétropropagation, la mise à jour des poids et la validation. Le meilleur checkpoint est retenu pour chaque entraînement, puis les six modèles sont évalués sur le test.
 
-**Limites :** des capacités proches et un budget identique en époques ne rendent pas les architectures ni leur coût équivalents. Le résultat reste propre à ces réglages et à Fashion-MNIST.
+Le CNN atteint **91,04 ± 0,38 % d’exactitude**, contre **87,89 ± 0,42 %** pour le MLP. Il demande toutefois un temps d’entraînement moyen environ **2,75 fois plus long**. L’analyse des erreurs montre aussi que le gain global ne concerne pas toutes les classes pour la graine présentée en détail.
 
-[Code et présentation](https://github.com/KenziBoughadou/fashion-mnist-study) · [Six expériences et figures](https://github.com/KenziBoughadou/fashion-mnist-study/blob/main/results/reference/report/README.md) · [Reproductibilité](https://github.com/KenziBoughadou/fashion-mnist-study/blob/main/docs/REPRODUCIBILITY.md)
+Cette comparaison porte sur deux architectures et des réglages précis. Un nombre de paramètres proche ne rend pas les modèles équivalents, et un même nombre d’époques ne correspond pas au même coût de calcul.
 
-*Pour les deux études d’images, les valeurs « ± » sont des écarts-types d’échantillon sur trois graines, pas des intervalles de confiance.*
+[Consulter le code](https://github.com/KenziBoughadou/fashion-mnist-study) · [Voir les six expériences](https://github.com/KenziBoughadou/fashion-mnist-study/blob/main/results/reference/report/README.md) · [Reproduire l’étude](https://github.com/KenziBoughadou/fashion-mnist-study/blob/main/docs/REPRODUCIBILITY.md)
 
-## MediNote — fidélité des résumés et traçabilité des sources
+*Dans les deux études d’images, les valeurs après « ± » sont des écarts-types d’échantillon calculés sur trois graines. Ce ne sont pas des intervalles de confiance.*
 
-À partir de consultations fictives en français, je compare deux méthodes utilisant le même modèle de langage : **rédaction directe d’une note** et **extraction structurée de faits suivie d’une mise en forme déterministe**.
+## MediNote : évaluer la fidélité d’un résumé
 
-L’évaluation distingue couverture des faits, omissions, contradictions et soutien des citations. Elle mesure aussi coût et latence. Le test principal porte sur quarante consultations ; les cas de stress restent séparés.
+**Extraire les faits avant de rédiger permet-il de mieux conserver le contenu d’une consultation ?**
 
-**Résultat observé :** la rédaction directe conserve **95,83 % des faits attendus**, contre **92,50 %** pour la méthode structurée, selon l’évaluation amendée v1.1. Les deux méthodes échouent au critère strict du stress sur les dix paires ; un diagnostic exploratoire détaille les omissions sans remplacer ce résultat.
+MediNote compare deux méthodes utilisant le même modèle de langage déjà entraîné. La première produit directement une note à partir d’un dialogue fictif. La seconde extrait des faits structurés, puis un programme Python les met en forme selon des règles fixes.
 
-L’application **React / FastAPI** permet de comparer les notes, de retrouver leurs sources et d’exporter un brouillon. La démonstration utilise des consultations fictives prédéfinies.
+Sur quarante consultations de test, j’évalue les faits conservés, les omissions, les contradictions et la correspondance entre les citations et le texte. Le coût et le temps de réponse sont également mesurés.
 
-**Limites :** corpus artificiel, relecture par l’auteur sans second avis indépendant, règles d’évaluation amendées après observation. Aucun gain de temps clinique n’est établi.
+Selon les règles d’évaluation amendées en version 1.1, la rédaction directe conserve **95,83 % des faits attendus**, contre **92,50 %** pour la méthode structurée. Dans cette expérience, la méthode structurée conserve donc moins de faits que la rédaction directe. Les deux méthodes échouent au critère strict du test de stress sur les dix paires de dialogues. Une analyse complémentaire détaille les omissions, tout en conservant ce résultat initial.
 
-[Code et présentation](https://github.com/KenziBoughadou/medinote) · [Démo en ligne](https://medinote.kbcompany.fr) · [Méthodologie et résultats](https://github.com/KenziBoughadou/medinote/blob/main/docs/HUMAN_REVIEW_RESULTS.md)
+L’application React et FastAPI permet de comparer les notes, de retrouver les passages cités et d’exporter un brouillon à partir de consultations fictives prédéfinies.
 
-## Compétences mises en pratique
+Le corpus est artificiel et la relecture a été réalisée par l’auteur, sans second avis indépendant. Certaines règles d’évaluation ont été amendées après observation des sorties ; ces changements sont documentés. Aucun gain de temps en situation clinique n’a été mesuré.
 
-| Domaine | Réalisations consultables dans les dépôts |
-|---|---|
-| Machine learning et deep learning | Prétraitement, régression logistique, MLP, CNN, boucles PyTorch, checkpoints |
-| Évaluation expérimentale | Séparation des données, répétitions par graine, analyse des erreurs, calibration et abstention |
-| NLP et évaluation de LLM | Extraction structurée, comparaison de pipelines, annotations, bootstrap apparié, coût et latence |
-| Développement logiciel | API FastAPI, interfaces React et Streamlit, tests, Git, Docker et CI pour MediNote |
-| Reproductibilité | Versions figées, protocoles documentés, prédictions archivées et rapports régénérables |
+[Consulter le code](https://github.com/KenziBoughadou/medinote) · [Essayer la démonstration](https://medinote.kbcompany.fr) · [Lire l’évaluation](https://github.com/KenziBoughadou/medinote/blob/main/docs/HUMAN_REVIEW_RESULTS.md)
 
-Les dépôts donnent accès au code, aux résultats détaillés, aux limites et aux commandes de reproduction. Les pistes d’amélioration sont distinguées des expériences effectivement exécutées.
+## Méthodes et outils
+
+Ces projets me permettent de travailler sur plusieurs aspects de l’IA : l’apprentissage supervisé avec scikit-learn, l’entraînement de réseaux avec PyTorch et l’évaluation de modèles de langage. J’utilise NumPy et Matplotlib pour les calculs et les figures, ainsi que Streamlit ou React et FastAPI pour rendre les résultats consultables.
+
+J’accorde une attention particulière à la séparation des données, au choix des métriques et à l’analyse des erreurs. Les dépôts comprennent des tests, les versions des dépendances et les commandes de reproduction. MediNote utilise également Docker et GitHub Actions.
+
+**MediNote et PathMNIST Confidence sont des projets académiques. Ils n’ont pas fait l’objet d’une validation clinique et ne sont pas destinés à un usage diagnostique.**
 
 <details>
-<summary>Parcours antérieur — projets de cybersécurité</summary>
+<summary>Autres projets : cybersécurité</summary>
 
-Mon parcours comprend également une formation en cybersécurité et management. Les projets précédents restent accessibles :
+Mon parcours comprend aussi une formation en cybersécurité et management. Voici les projets réalisés dans ce domaine :
 
-- [Gestionnaire de mots de passe](https://github.com/KenziBoughadou/PasswordManager)
-- [Scanner SQL Injection](https://github.com/KenziBoughadou/SQL-Injection-Scanner)
-- [Scanner réseau ARP](https://github.com/KenziBoughadou/Network-Scanner)
-- [Vérificateur de robustesse des mots de passe](https://github.com/KenziBoughadou/Password-Strength-Checker)
-- [Sécurisation du SI d’un établissement hospitalier](https://github.com/KenziBoughadou/Securisation-SI-d-un-etablissement-hospitalier)
-- [Projet de sécurisation d’une clinique](https://docs.google.com/document/d/1PHJfkF1azAh7t2jBwTaKjhOJtszHBK0MQ2s4fL786Jo/edit?usp=sharing)
+[Gestionnaire de mots de passe](https://github.com/KenziBoughadou/PasswordManager) · [Scanner SQL Injection](https://github.com/KenziBoughadou/SQL-Injection-Scanner) · [Scanner réseau ARP](https://github.com/KenziBoughadou/Network-Scanner)
+
+[Vérificateur de robustesse des mots de passe](https://github.com/KenziBoughadou/Password-Strength-Checker) · [Sécurisation du SI d’un établissement hospitalier](https://github.com/KenziBoughadou/Securisation-SI-d-un-etablissement-hospitalier) · [Projet de sécurisation d’une clinique](https://docs.google.com/document/d/1PHJfkF1azAh7t2jBwTaKjhOJtszHBK0MQ2s4fL786Jo/edit?usp=sharing)
 
 </details>
