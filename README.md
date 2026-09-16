@@ -8,7 +8,9 @@ Ce portfolio rassemble trois projets personnels. Pour chacun, je pars d’une qu
 
 Je recherche un **stage en IA ou en data du 22 mars au 31 août 2027**, en priorité dans le domaine de la santé. Je souhaite ensuite poursuivre en alternance en M2 à partir de septembre 2027, pour douze mois.
 
-[LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) · [GitHub](https://github.com/KenziBoughadou) · [Me contacter](mailto:kenzi.boughadou@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/kenzi-boughadou-3a4422318/) · [GitHub](https://github.com/KenziBoughadou)
+
+**Me contacter :** [07 76 05 01 73](tel:+33776050173) ou [kenzi.boughadou@gmail.com](mailto:kenzi.boughadou@gmail.com)
 
 ## Projets
 
